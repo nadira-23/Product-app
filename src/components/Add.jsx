@@ -109,6 +109,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import backgroundImage from '/images/backgroundImage.jpg';
 
 const Add = () => {
   const [product, setProduct] = useState({
@@ -162,7 +163,19 @@ const Add = () => {
   };
 
   return (
-    <div>
+    
+       <div
+      style={{ 
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+       width: '100vw',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px',}}>
+          <div>
       <h2 style={{ paddingTop: "50px" }}>New Product</h2>
       <Box
         component="form"
@@ -208,6 +221,7 @@ const Add = () => {
           Add
         </Button>
       </Box>
+    </div>
     </div>
   );
 };

@@ -10,7 +10,7 @@ import axios from 'axios';
 import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 //import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 //import backgroundImage from "./REACT Learnings/product-app/public/images"; // Adjust the path as necessary
-//import backgroundImage from 'path/to/product_image.jpg'; // Adjust the path as necessary
+import backgroundImage from '/images/backgroundImage.jpg'; // Adjust the path as necessary
 
 
 
@@ -46,18 +46,19 @@ useEffect(()=>{
 
 
 return (
-  // <div 
-  // style={{ 
-  //   backgroundImage: `url(${backgroundImage})`,
-  //   backgroundSize: 'cover',
-  //   backgroundPosition: 'center',
-  //   height: '100vh',
-  //   width: '100vw',
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   justifyContent: 'center'
-  // }}>
-  
+  <>
+  <div 
+      style={{ 
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        width: '100vw',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px',}}>
+<div>
   <Grid container spacing={4}> {/* Adjusted spacing for more space between cards */}
     {rows.map((row) => (
       <Grid item xs={12} sm={6} md={4} key={row.id}>
@@ -83,7 +84,9 @@ return (
       </Grid>
     ))}
   </Grid>
-  //</div>
+  </div>
+  </div>
+  </>
 );
 
  };

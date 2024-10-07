@@ -1,81 +1,215 @@
-import { TextField } from '@mui/material'
-import React from 'react'
-import { useState } from 'react'
 
-let Add = () => {
-const  [employee, setemployee] = useState({
-empid:'',
-Name:'',
-department:'',
-location:''
 
-})
+// export default Add;
+// import React, { useState } from 'react';
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
+// import Button from '@mui/material/Button';
 
-let fetchValue=(e)=>{
+// const Add = () => {
+//   const [product, setProduct] = useState({
+//     Title: '',
+//     Productprice: '',
+//     ProductRate: ''
+//   });
   
-//console.log(e)
-setemployee({...employee,[e.target.name]:e.target.value})
+//   const [errors, setErrors] = useState({});
 
+//   const fetchValue = (e) => {
+//     setProduct({ ...product, [e.target.name]: e.target.value });
+//   };
 
-}
-let sendData=()=>{
-console.log(employee)
+//   const validate = () => {
+//     const newErrors = {};
+    
+//     // Title validation: check if not empty and only contains alphabetic characters
+//     if (!product.Title) {
+//       newErrors.Title = 'Title is required';
+//     } else if (!/^[a-zA-Z\s]*$/.test(product.Title)) {
+//       newErrors.Title = 'Title must contain only alphabetic characters';
+//     }
 
+//     // Product price validation: must be a positive number
+//     if (!product.Productprice || isNaN(product.Productprice) || product.Productprice <= 0) {
+//       newErrors.Productprice = 'Price must be a positive number';
+//     }
 
-}
+//     // Product rate validation: must be between 0 and 5
+//     if (!product.ProductRate || isNaN(product.ProductRate) || product.ProductRate < 0 || product.ProductRate > 5000) {
+//       newErrors.ProductRate = 'Rate must be between 0 and 5000';
+//     }
 
+//     return newErrors;
+//   };
 
+//   const sendData = () => {
+//     const validationErrors = validate();
+//     if (Object.keys(validationErrors).length > 0) {
+//       setErrors(validationErrors);
+//     } else {
+//       console.log('Product details:', product); // Log product details on successful validation
+//       setErrors({}); // Clear errors on successful submission
+//       // You can add your data submission logic here
+//     }
+//   };
 
+//   return (
+//     <div>
+//       <h2 style={{ paddingTop: "50px" }}>New Product</h2>
+//       <Box
+//         component="form"
+//         sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+//         noValidate
+//         autoComplete="off"
+//       >
+//         <TextField
+//           id="outlined-basic"
+//           label="Title"
+//           variant="outlined"
+//           name='Title'
+//           onChange={fetchValue}
+//           error={!!errors.Title}
+//           helperText={errors.Title}
+//         /><br />
+
+//         <TextField
+//           id="filled-basic"
+//           label="Product Price"
+//           variant="outlined"
+//           name='Productprice'
+//           onChange={fetchValue}
+//           error={!!errors.Productprice}
+//           helperText={errors.Productprice}
+//         /><br />
+
+//         <TextField
+//           id="standard-basic"
+//           label="Product Rate"
+//           variant="outlined"
+//           name='ProductRate'
+//           onChange={fetchValue}
+//           error={!!errors.ProductRate}
+//           helperText={errors.ProductRate}
+//         /><br />
+
+//         <Button
+//           style={{ backgroundColor: "#333333", color: "white" }}
+//           variant="contained"
+//           onClick={sendData}
+//         >
+//           Add
+//         </Button>
+//       </Box>
+//     </div>
+//   );
+// };
+
+// export default Add;
+import React, { useState } from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
+const Add = () => {
+  const [product, setProduct] = useState({
+    Title: '',
+    Productprice: '',
+    ProductRate: ''
+  });
+  
+  const [errors, setErrors] = useState({});
+
+  const fetchValue = (e) => {
+    setProduct({ ...product, [e.target.name]: e.target.value });
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    
+    // Title validation: check if not empty and only contains alphabetic characters
+    if (!product.Title) {
+      newErrors.Title = 'Title is required';
+    } else if (!/^[a-zA-Z\s]*$/.test(product.Title)) {
+      newErrors.Title = 'Title must contain only alphabetic characters';
+    }
+
+    // Product price validation: must be a positive number
+    if (!product.Productprice) {
+      newErrors.Productprice = 'Price is required';
+    } else if (!/^\d+(\.\d+)?$/.test(product.Productprice) || product.Productprice <= '0') {
+      newErrors.Productprice = 'Price must be a positive number';
+    }
+
+    // Product rate validation: must be between 0 and 5
+    if (!product.ProductRate) {
+      newErrors.ProductRate = 'Rate is required';
+    } else if (!/^\d+(\.\d+)?$/.test(product.ProductRate) || product.ProductRate < '0' || product.ProductRate > 5) {
+      newErrors.ProductRate = 'Rate must be between 0 and 5';
+    }
+
+    return newErrors;
+  };
+
+  const sendData = () => {
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      console.log('Product details:', product); // Log product details on successful validation
+      setErrors({}); // Clear errors on successful submission
+      // You can add your data submission logic here
+    }
+  };
 
   return (
-    <>
-    <h2 style={{marginTop:"50px"}}>New Product</h2>
-    <TextField
-     id="standard-basic" 
-     label="Employee ID"
-      variant="standard" 
-      name="empid"
-      //value={employee.empid}
-      onChange={fetchValue}
-      />
-      <br />
-    <TextField 
-    id="standard-basic" 
-    label="Employee Name"
-     variant="standard" 
-     name="Name"
-      //value={employee.Name}
-      onChange={fetchValue}/>
-     <br />
-    <TextField
-     id="standard-basic"
-      label="Employee Dept" 
-      variant="standard" 
-      name="department"
-       //value={employee.department}
-       onChange={fetchValue}/>
-      <br />
-    <TextField
-     id="standard-basic" 
-     label="Employee location"
-      variant="standard" 
-      name="location"
-       //value={employee.location}
-       onChange={fetchValue}/>
-      <br />
+    <div>
+      <h2 style={{ paddingTop: "50px" }}>New Product</h2>
+      <Box
+        component="form"
+        sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          id="outlined-basic"
+          label="Title"
+          variant="outlined"
+          name='Title'
+          onChange={fetchValue}
+          error={!!errors.Title}
+          helperText={errors.Title}
+        /><br />
 
-               <br />
-                <button
-                 variant="contained"
-                 onClick={sendData}
-                 >Submit
-                 </button>
+        <TextField
+          id="filled-basic"
+          label="Product Price"
+          variant="outlined"
+          name='Productprice'
+          onChange={fetchValue}
+          error={!!errors.Productprice}
+          helperText={errors.Productprice}
+        /><br />
 
-            
+        <TextField
+          id="standard-basic"
+          label="Product Rate"
+          variant="outlined"
+          name='ProductRate'
+          onChange={fetchValue}
+          error={!!errors.ProductRate}
+          helperText={errors.ProductRate}
+        /><br />
 
+        <Button
+          style={{ backgroundColor: "#333333", color: "white" }}
+          variant="contained"
+          onClick={sendData}
+        >
+          Add
+        </Button>
+      </Box>
+    </div>
+  );
+};
 
-    </>
-  )
-}
-
-export default Add
+export default Add;

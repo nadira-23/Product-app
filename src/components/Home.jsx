@@ -9,6 +9,10 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 //import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+//import backgroundImage from "./REACT Learnings/product-app/public/images"; // Adjust the path as necessary
+//import backgroundImage from 'path/to/product_image.jpg'; // Adjust the path as necessary
+
+
 
 const Home = () => {
     // const rows=[{
@@ -42,10 +46,22 @@ useEffect(()=>{
 
 
 return (
+  // <div 
+  // style={{ 
+  //   backgroundImage: `url(${backgroundImage})`,
+  //   backgroundSize: 'cover',
+  //   backgroundPosition: 'center',
+  //   height: '100vh',
+  //   width: '100vw',
+  //   display: 'flex',
+  //   alignItems: 'center',
+  //   justifyContent: 'center'
+  // }}>
+  
   <Grid container spacing={4}> {/* Adjusted spacing for more space between cards */}
     {rows.map((row) => (
       <Grid item xs={12} sm={6} md={4} key={row.id}>
-        <Card style={{ width: '70%', height: '90%',marginTop:"50px" }}> {/* Allow card to take full width/height */}
+        <Card style={{ width: '70%', height: '90%',marginTop:"50px"}}> {/* Allow card to take full width/height */}
           <CardMedia
             component="img"
             style={{ height: 300, objectFit: "cover" }} // Adjust height for the image
@@ -67,6 +83,7 @@ return (
       </Grid>
     ))}
   </Grid>
+  //</div>
 );
 
  };
